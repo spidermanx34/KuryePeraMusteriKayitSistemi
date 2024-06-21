@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KuryePeraVeriTabaniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KayitTablosuu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeslimAdresi" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="IkıncıAdres" Type="nvarchar" MaxLength="400" />
+          <Property Name="PaketIcerigi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KuryeUcreti" Type="float" />
+          <Property Name="Kdv" Type="float" />
+          <Property Name="KuryeHakEdis" Type="float" />
+          <Property Name="Faturali" Type="bit" />
+          <Property Name="Faturasiz" Type="bit" />
+          <Property Name="Cari" Type="bit" />
+          <Property Name="NakitKart" Type="bit" />
+          <Property Name="Kuryede" Type="bit" />
+          <Property Name="Bende" Type="bit" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="MusteriAd" Type="nvarchar" MaxLength="100" />
+          <Property Name="KuryeAd" Type="nvarchar" MaxLength="100" />
+          <Property Name="AlimAdresi" Type="nvarchar" MaxLength="400" />
+          <Property Name="Kazanc" Type="float" />
+          <Property Name="TeslimEdilenKisi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SilinenKayitId" Type="int" />
+        </EntityType>
+        <EntityType Name="KullaniciTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullaniciadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="isimsoyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="E_Posta" Type="nvarchar" MaxLength="50" />
+          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciFotograf" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TelefonNumarasi" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumYeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitEkle" Type="bit" />
+          <Property Name="MusteriEkle" Type="bit" />
+          <Property Name="KuryeEkle" Type="bit" />
+          <Property Name="Ayarlar" Type="bit" />
+          <Property Name="KullaniciDegistir" Type="bit" />
+          <Property Name="Tahsilatlar" Type="bit" />
+          <Property Name="Raporlama" Type="bit" />
+          <Property Name="KullaniciEkle" Type="bit" />
+        </EntityType>
+        <EntityType Name="KuryeOdemeTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KuryeAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KuryeTelefonNumarasi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KuryeyeOlanBorc" Type="float" />
+          <Property Name="KuryeToplamBorc" Type="float" />
+          <Property Name="KayitTablosuId" Type="int" />
+        </EntityType>
+        <EntityType Name="MusteriOdemeTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriTelefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="OdemeDurumu" Type="bit" />
+          <Property Name="MusteriToplamBorc" Type="float" />
+          <Property Name="KayitTablosuId" Type="int" />
+        </EntityType>
+        <EntityType Name="MusteriTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdsoyadUnvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriTelefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriAdres" Type="nvarchar" MaxLength="200" />
+          <Property Name="MusteriEposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriVergiNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliKisi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonelTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KuryeAdiSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KuryeTelefonNumarasi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KuryeMotorPlakasi" Type="nchar" MaxLength="10" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="KuryePeraVeriTabaniModelStoreContainer">
+          <EntitySet Name="KayitTablosuu" EntityType="Self.KayitTablosuu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciTablosu" EntityType="Self.KullaniciTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KuryeOdemeTablosu" EntityType="Self.KuryeOdemeTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriOdemeTablosu" EntityType="Self.MusteriOdemeTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriTablosu" EntityType="Self.MusteriTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelTablosu" EntityType="Self.PersonelTablosu" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KuryePeraVeriTabaniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MusteriTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdsoyadUnvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriAdres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriVergiNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliKisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PersonelTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KuryeAdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeTelefonNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeMotorPlakasi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="KuryePeraVeriTabaniEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MusteriTablosu" EntityType="Self.MusteriTablosu" />
+          <EntitySet Name="PersonelTablosu" EntityType="Self.PersonelTablosu" />
+          <EntitySet Name="KullaniciTablosu" EntityType="KuryePeraVeriTabaniModel.KullaniciTablosu" />
+          <EntitySet Name="KuryeOdemeTablosu" EntityType="KuryePeraVeriTabaniModel.KuryeOdemeTablosu" />
+          <EntitySet Name="KayitTablosuu" EntityType="KuryePeraVeriTabaniModel.KayitTablosuu" />
+          <EntitySet Name="MusteriOdemeTablosu" EntityType="KuryePeraVeriTabaniModel.MusteriOdemeTablosu" />
+        </EntityContainer>
+        <EntityType Name="KullaniciTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullaniciadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isimsoyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_Posta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciFotograf" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitEkle" Type="Boolean" />
+          <Property Name="MusteriEkle" Type="Boolean" />
+          <Property Name="KuryeEkle" Type="Boolean" />
+          <Property Name="Ayarlar" Type="Boolean" />
+          <Property Name="KullaniciDegistir" Type="Boolean" />
+          <Property Name="Tahsilatlar" Type="Boolean" />
+          <Property Name="Raporlama" Type="Boolean" />
+          <Property Name="KullaniciEkle" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="KuryeOdemeTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KuryeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeTelefonNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeyeOlanBorc" Type="Double" />
+          <Property Name="KuryeToplamBorc" Type="Double" />
+          <Property Name="KayitTablosuId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KayitTablosuu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeslimAdresi" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IkıncıAdres" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PaketIcerigi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeUcreti" Type="Double" />
+          <Property Name="Kdv" Type="Double" />
+          <Property Name="KuryeHakEdis" Type="Double" />
+          <Property Name="Faturali" Type="Boolean" />
+          <Property Name="Faturasiz" Type="Boolean" />
+          <Property Name="Cari" Type="Boolean" />
+          <Property Name="NakitKart" Type="Boolean" />
+          <Property Name="Kuryede" Type="Boolean" />
+          <Property Name="Bende" Type="Boolean" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="MusteriAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KuryeAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AlimAdresi" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Kazanc" Type="Double" />
+          <Property Name="TeslimEdilenKisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SilinenKayitId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MusteriOdemeTablosu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OdemeDurumu" Type="Boolean" />
+          <Property Name="MusteriToplamBorc" Type="Double" />
+          <Property Name="KayitTablosuId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KuryePeraVeriTabaniModelStoreContainer" CdmEntityContainer="KuryePeraVeriTabaniEntities">
+          <EntitySetMapping Name="MusteriTablosu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.MusteriTablosu">
+              <MappingFragment StoreEntitySet="MusteriTablosu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdsoyadUnvan" ColumnName="AdsoyadUnvan" />
+                <ScalarProperty Name="MusteriTelefon" ColumnName="MusteriTelefon" />
+                <ScalarProperty Name="MusteriAdres" ColumnName="MusteriAdres" />
+                <ScalarProperty Name="MusteriEposta" ColumnName="MusteriEposta" />
+                <ScalarProperty Name="MusteriVergiNo" ColumnName="MusteriVergiNo" />
+                <ScalarProperty Name="YetkiliKisi" ColumnName="YetkiliKisi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelTablosu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.PersonelTablosu">
+              <MappingFragment StoreEntitySet="PersonelTablosu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KuryeAdiSoyadi" ColumnName="KuryeAdiSoyadi" />
+                <ScalarProperty Name="KuryeTelefonNumarasi" ColumnName="KuryeTelefonNumarasi" />
+                <ScalarProperty Name="KuryeMotorPlakasi" ColumnName="KuryeMotorPlakasi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciTablosu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.KullaniciTablosu">
+              <MappingFragment StoreEntitySet="KullaniciTablosu">
+                <ScalarProperty Name="KullaniciEkle" ColumnName="KullaniciEkle" />
+                <ScalarProperty Name="Raporlama" ColumnName="Raporlama" />
+                <ScalarProperty Name="Tahsilatlar" ColumnName="Tahsilatlar" />
+                <ScalarProperty Name="KullaniciDegistir" ColumnName="KullaniciDegistir" />
+                <ScalarProperty Name="Ayarlar" ColumnName="Ayarlar" />
+                <ScalarProperty Name="KuryeEkle" ColumnName="KuryeEkle" />
+                <ScalarProperty Name="MusteriEkle" ColumnName="MusteriEkle" />
+                <ScalarProperty Name="KayitEkle" ColumnName="KayitEkle" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="DogumYeri" ColumnName="DogumYeri" />
+                <ScalarProperty Name="TelefonNumarasi" ColumnName="TelefonNumarasi" />
+                <ScalarProperty Name="KullaniciFotograf" ColumnName="KullaniciFotograf" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
+                <ScalarProperty Name="E_Posta" ColumnName="E_Posta" />
+                <ScalarProperty Name="isimsoyisim" ColumnName="isimsoyisim" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Kullaniciadi" ColumnName="Kullaniciadi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KuryeOdemeTablosu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.KuryeOdemeTablosu">
+              <MappingFragment StoreEntitySet="KuryeOdemeTablosu">
+                <ScalarProperty Name="KayitTablosuId" ColumnName="KayitTablosuId" />
+                <ScalarProperty Name="KuryeToplamBorc" ColumnName="KuryeToplamBorc" />
+                <ScalarProperty Name="KuryeyeOlanBorc" ColumnName="KuryeyeOlanBorc" />
+                <ScalarProperty Name="KuryeTelefonNumarasi" ColumnName="KuryeTelefonNumarasi" />
+                <ScalarProperty Name="KuryeAdi" ColumnName="KuryeAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KayitTablosuu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.KayitTablosuu">
+              <MappingFragment StoreEntitySet="KayitTablosuu">
+                <ScalarProperty Name="SilinenKayitId" ColumnName="SilinenKayitId" />
+                <ScalarProperty Name="TeslimEdilenKisi" ColumnName="TeslimEdilenKisi" />
+                <ScalarProperty Name="Kazanc" ColumnName="Kazanc" />
+                <ScalarProperty Name="AlimAdresi" ColumnName="AlimAdresi" />
+                <ScalarProperty Name="KuryeAd" ColumnName="KuryeAd" />
+                <ScalarProperty Name="MusteriAd" ColumnName="MusteriAd" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Bende" ColumnName="Bende" />
+                <ScalarProperty Name="Kuryede" ColumnName="Kuryede" />
+                <ScalarProperty Name="NakitKart" ColumnName="NakitKart" />
+                <ScalarProperty Name="Cari" ColumnName="Cari" />
+                <ScalarProperty Name="Faturasiz" ColumnName="Faturasiz" />
+                <ScalarProperty Name="Faturali" ColumnName="Faturali" />
+                <ScalarProperty Name="KuryeHakEdis" ColumnName="KuryeHakEdis" />
+                <ScalarProperty Name="Kdv" ColumnName="Kdv" />
+                <ScalarProperty Name="KuryeUcreti" ColumnName="KuryeUcreti" />
+                <ScalarProperty Name="PaketIcerigi" ColumnName="PaketIcerigi" />
+                <ScalarProperty Name="IkıncıAdres" ColumnName="IkıncıAdres" />
+                <ScalarProperty Name="TeslimAdresi" ColumnName="TeslimAdresi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriOdemeTablosu">
+            <EntityTypeMapping TypeName="KuryePeraVeriTabaniModel.MusteriOdemeTablosu">
+              <MappingFragment StoreEntitySet="MusteriOdemeTablosu">
+                <ScalarProperty Name="KayitTablosuId" ColumnName="KayitTablosuId" />
+                <ScalarProperty Name="MusteriToplamBorc" ColumnName="MusteriToplamBorc" />
+                <ScalarProperty Name="OdemeDurumu" ColumnName="OdemeDurumu" />
+                <ScalarProperty Name="MusteriTelefon" ColumnName="MusteriTelefon" />
+                <ScalarProperty Name="MusteriAdi" ColumnName="MusteriAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
